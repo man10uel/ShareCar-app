@@ -12,7 +12,13 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-AspNetCoreShareCar-DF2C11D9-6389-470A-90CA-A11068D04184")]
-
+[assembly: System.Reflection.AssemblyCompanyAttribute("AspNetCoreShareCar")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyProductAttribute("AspNetCoreShareCar")]
+[assembly: System.Reflection.AssemblyTitleAttribute("AspNetCoreShareCar")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
 

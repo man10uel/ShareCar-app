@@ -12432,11 +12432,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/man10uel/Projects/AspNetCoreMvc/AspNetCoreShareCar/AspNetCoreShareCar.csproj",
+      "projectUniqueName": "/Users/man10uel/Projects/AspNetCoreMvc/ContosoUniversity/man10uel/ShareCar-app/AspNetCoreShareCar.csproj",
       "projectName": "AspNetCoreShareCar",
-      "projectPath": "/Users/man10uel/Projects/AspNetCoreMvc/AspNetCoreShareCar/AspNetCoreShareCar.csproj",
+      "projectPath": "/Users/man10uel/Projects/AspNetCoreMvc/ContosoUniversity/man10uel/ShareCar-app/AspNetCoreShareCar.csproj",
       "packagesPath": "/Users/man10uel/.nuget/packages/",
-      "outputPath": "/Users/man10uel/Projects/AspNetCoreMvc/AspNetCoreShareCar/obj/",
+      "outputPath": "/Users/man10uel/Projects/AspNetCoreMvc/ContosoUniversity/man10uel/ShareCar-app/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
