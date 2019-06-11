@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Microsoft.AspNetCore.Identity;
+
+@model AspNetCoreShareCar.Models.TravelViewModel
+
+@inject UserManager<IdentityUser> userManager
+
+@{
+
+    ViewData["Title"] = "Travels Done";
+    double totalAmount = 0;
+}
+
+
+<div class="card card-default">
+    <div class="card-header">
+        <form class="pull-right" asp-action="Index" method="get">
+            <input type="submit" name="PassengerOrDriver" value="@ViewData["CurrentPassengerOrDriver"]" class="btn btn-outline-primary" />
+        </form> 
+
+    </div>
+
+    <table class="table table-hover mb-0">
+        <thead>
+            <tr>
+                <td>&#x2714;</td>
+                <td><i class="fas fa-user"></i> 
+                    @Html.DisplayNameFor(model => model.Travels[0].PassengerId)
+                </td>
+                <td><i class="fas fa-city"></i> @Html.DisplayNameFor(model => model.Travels[0].DepartureCity)</td>
+                <td><i class="fas fa-city"></i> @Html.DisplayNameFor(model => model.Travels[0].ArrivalCity)</td>
+                <td><i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.Travels[0].DueAt)</td>
+                <td><i class="fas fa-dollar-sign"></i> @Html.DisplayNameFor(model => model.Travels[0].Price)</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var travel in Model.Travels)
+            {
+            <tr>
+                @{
+                    var user = 
+                        await userManager.FindByIdAsync(travel.PassengerId);
+                    var checkDisabled =
+                        ViewData["CurrentPassengerOrDriver"].ToString() == "Driver" ? "disabled" : "";
+                }
+                <td>                    
+                    <form asp-action="ToPay" method="POST">                       
+                    <input type="checkbox" class="done-checkbox" @checkDisabled />
+                    <input type="hidden" name="travelId" value="@travel.Id" />
+                    </form>
+                </td>
+                <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => travel.DepartureCity)</td>
+                <td>@Html.DisplayFor(modelItem => travel.ArrivalCity)</td>
+                <td>@Html.DisplayFor(modelItem => travel.DueAt)</td>
+                <td>@Html.DisplayFor(modelItem => travel.Price)</td>
+                @{ totalAmount += travel.Price; } 
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="card-footer">
+        <a asp-action="Create"><i class="fas fa-plus"></i> Create Travel</a>
+        <div class="float-right">Total Amount @totalAmount <i class="fas fa-euro-sign"></i> </div>
+    </div>
+</div>

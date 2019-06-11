@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{35D9F957-8747-45D6-9554-E7C3CCDB9F95}|Default">
+  <MonoDevelop.Ide.ItemProperties.AspNetCoreShareCar PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Estado de AspNetCoreShareCar">
+    <Files>
+      <File FileName="Estado de AspNetCoreShareCar" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="AspNetCoreShareCar" expanded="True">
+            <Node name="AspNetCoreShareCar" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

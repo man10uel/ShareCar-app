@@ -1,0 +1,80 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Microsoft.AspNetCore.Identity
+
+@model AspNetCoreShareCar.Models.Travel
+
+@inject UserManager<IdentityUser> userManager
+
+@{
+    ViewData["Title"] = "Create";
+
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>
+            Create <small>New Travel</small>
+        </h2>
+        <hr />
+
+
+        <form asp-action="Create" method="post">
+
+            <div asp-validation="ModelOnly" class="text-danger"></div>
+
+
+            <!-- PassengerId -->
+            <div class="form-group">
+                <label asp-for="PassengerId" class="control-label"></label>
+                <select asp-for="PassengerId" class="form-control">
+                    <option> Select Passenger </option>
+                    @foreach (var user in userManager.Users.ToArray())
+                    {
+                        <option value="@user.Id">@user.Email</option>
+                    }
+                </select>
+                <span asp-validation-for="PassengerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartureCity" class="control-label"></label>
+                <input asp-for="DepartureCity" class="form-control" />
+                <span asp-validation-for="DepartureCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArrivalCity" class="control-label"></label>
+                <input asp-for="ArrivalCity" class="form-control" />
+                <span asp-validation-for="ArrivalCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueAt" class="control-label"></label>
+                <input asp-for="DueAt" class="form-control" />
+                <span asp-validation-for="DueAt" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"><i class="fas fa-chevron-left"></i> Back to Travels</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
