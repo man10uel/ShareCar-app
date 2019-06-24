@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.ItemProperties.AspNetCoreShareCar PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Estado de ShareCar-app">
     <Files>
-      <File FileName="Views/Travel/Index.cshtml" Line="61" Column="17" />
+      <File FileName="Views/Travel/Index.cshtml" Line="56" Column="31" />
       <File FileName="Estado de ShareCar-app" />
     </Files>
     <Pads>
@@ -10,11 +10,8 @@
         <State name="__root__">
           <Node name="AspNetCoreShareCar" expanded="True">
             <Node name="AspNetCoreShareCar" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="Travel" expanded="True">
-                  <Node name="Index.cshtml" selected="True" />
-                </Node>
-              </Node>
+              <Node name="wwwroot" expanded="True" />
+              <Node name="app.db" selected="True" />
             </Node>
           </Node>
         </State>
