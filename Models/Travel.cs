@@ -11,6 +11,11 @@ namespace AspNetCoreShareCar.Models
         public Guid Id { get; set; }
 
         [Required]
+        [Display(Name = "Number of seats")]
+        [Range(1, 10)]
+        public int Seats { get; set; }
+
+        [Required]
         [Display(Name = "Departure City")]
         public string DepartureCity { get; set; }
 

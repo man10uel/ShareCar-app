@@ -82,6 +82,7 @@ namespace AspNetCoreShareCar.Controllers
 
             var travelToSave = new Travel()
             {
+                Seats = newTravel.Seats,
                 ArrivalCity = newTravel.ArrivalCity,
                 DepartureCity = newTravel.DepartureCity,
                 DueAt = newTravel.DueAt,
@@ -95,7 +96,7 @@ namespace AspNetCoreShareCar.Controllers
 
             if (!successful)
             {
-                return BadRequest("Could not add item.");
+                return BadRequest("Could not add the travel.");
             }
 
             return RedirectToAction("Index");
