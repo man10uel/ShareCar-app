@@ -20,7 +20,7 @@ namespace AspNetCoreShareCar.Services
         }
 
 
-        public async Task<Travel[]> GetAllTravelsAsync(IdentityUser user, string passengerOrDriver)
+        public async Task<Travel[]> GetAllTravelsAsync(ApplicationUser user, string passengerOrDriver)
         {
             Travel[] travels = null;
 

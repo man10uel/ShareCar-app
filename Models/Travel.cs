@@ -30,7 +30,7 @@ namespace AspNetCoreShareCar.Models
         public DateTimeOffset DueAt { get; set; }
 
         [Required]
-        [Display(Name = "Price")]
+        [Display(Name = "Price")]        
         public double Price { get; set; }
 
         [Required]

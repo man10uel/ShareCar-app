@@ -8,7 +8,7 @@ namespace AspNetCoreShareCar.Services
     public interface ITravelService
     {
 
-        Task<Travel[]> GetAllTravelsAsync(IdentityUser user, string passengerOrDriver);
+        Task<Travel[]> GetAllTravelsAsync(ApplicationUser user, string passengerOrDriver);
         Task<bool> AddTravelAsync(Travel newTravel);
         Task<bool> ToPayTravelAsync(Guid travelId);
 

@@ -21,11 +21,11 @@ namespace AspNetCoreShareCar.Controllers
     {
 
         private readonly ITravelService _travelService;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
 
         public TravelController(ITravelService travelService, 
-            UserManager<IdentityUser> userManager)
+            UserManager<ApplicationUser> userManager)
         {
             _travelService  = travelService;
             _userManager = userManager;
