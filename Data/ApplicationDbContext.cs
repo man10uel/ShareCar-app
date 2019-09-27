@@ -15,5 +15,6 @@ namespace AspNetCoreShareCar.Data
         }
 
         public DbSet<Travel> Travels { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
     }
 }

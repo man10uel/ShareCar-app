@@ -13,9 +13,9 @@ namespace AspNetCoreShareCar.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AspNetCoreShareCar.Models.ApplicationUser> _userManager;
 
-        public ResetPasswordModel(UserManager<IdentityUser> userManager)
+        public ResetPasswordModel(UserManager<AspNetCoreShareCar.Models.ApplicationUser> userManager)
         {
             _userManager = userManager;
         }

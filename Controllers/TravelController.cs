@@ -85,8 +85,7 @@ namespace AspNetCoreShareCar.Controllers
                 Seats = newTravel.Seats,
                 ArrivalCity = newTravel.ArrivalCity,
                 DepartureCity = newTravel.DepartureCity,
-                DueAt = newTravel.DueAt,
-                PassengerId = newTravel.PassengerId,
+                DueAt = newTravel.DueAt,                
                 Price = newTravel.Price,
                 DriverId = currentUser.Id
             };
@@ -117,6 +116,24 @@ namespace AspNetCoreShareCar.Controllers
                 return BadRequest("Could not pay the travel.");
 
             return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> BookTravel(Guid travelId)
+        {
+            if (travelId == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            var travel = await _travelService.GetTravelAsync(travelId);                      
+
+            var succesful = await _travelService.BookTravel(currentUser, travel);
+
+            if (!succesful)
+                return BadRequest("Could not book the travel");
+            
+            return RedirectToAction("Index");                 
         }
 
 

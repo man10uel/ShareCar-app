@@ -34,13 +34,13 @@ namespace AspNetCoreShareCar.Services
                     break;
                 case "Passenger":
                     travels = await _context.Travels
-                        .Where(t => t.PassengerId == user.Id && t.Paid == false)
+                        .Where(t => t.DriverId != user.Id && t.Paid == false)
                         .ToArrayAsync();
 
                     break;
                 default:
                     travels = await _context.Travels
-                        .Where(t => t.PassengerId == user.Id && t.Paid == false)
+                        .Where(t => t.DriverId == user.Id && t.Paid == false)
                         .ToArrayAsync();
                     break;
             }
@@ -78,6 +78,42 @@ namespace AspNetCoreShareCar.Services
 
             return result == 1;
                        
+        }
+
+        public async Task<Travel> GetTravelAsync(Guid travelId)
+        {
+            var travel = await _context.Travels
+                .Where(t => t.Id == travelId)
+                .SingleOrDefaultAsync();
+
+            return travel;
+        }
+
+        public async Task<bool> BookTravel(ApplicationUser currentUser, Travel travel)
+        {
+            var booking = new Booking()
+            {
+                Id = new Guid(),
+                Passenger = currentUser,
+                Travel = travel
+            };
+
+            await _context.Bookings.AddAsync(booking);
+            var result = await _context.SaveChangesAsync();
+
+            return result == 1;
+        }
+
+        public async Task<Travel[]> SearchTravels(string departureCity, string arrivalCity, DateTime date)
+        {
+            var travels = await _context.Travels
+                .Include(travel => travel.Bookings)   
+                    .ThenInclude(booking => booking.Passenger)                    
+                .Where(travel => travel.DueAt == date && travel.DepartureCity == departureCity && travel.ArrivalCity == arrivalCity)
+                .ToArrayAsync();
+
+            return travels;
+
         }
     }
 }

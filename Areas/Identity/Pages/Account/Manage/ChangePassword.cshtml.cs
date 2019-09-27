@@ -11,13 +11,13 @@ namespace AspNetCoreShareCar.Areas.Identity.Pages.Account.Manage
 {
     public class ChangePasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<AspNetCoreShareCar.Models.ApplicationUser> _userManager;
+        private readonly SignInManager<AspNetCoreShareCar.Models.ApplicationUser> _signInManager;
         private readonly ILogger<ChangePasswordModel> _logger;
 
         public ChangePasswordModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<AspNetCoreShareCar.Models.ApplicationUser> userManager,
+            SignInManager<AspNetCoreShareCar.Models.ApplicationUser> signInManager,
             ILogger<ChangePasswordModel> logger)
         {
             _userManager = userManager;

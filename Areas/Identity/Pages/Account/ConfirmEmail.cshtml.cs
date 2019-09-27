@@ -12,9 +12,9 @@ namespace AspNetCoreShareCar.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<AspNetCoreShareCar.Models.ApplicationUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<IdentityUser> userManager)
+        public ConfirmEmailModel(UserManager<AspNetCoreShareCar.Models.ApplicationUser> userManager)
         {
             _userManager = userManager;
         }

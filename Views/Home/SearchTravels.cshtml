@@ -1,0 +1,60 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model AspNetCoreShareCar.Models.Travel[] 
+
+
+@{
+
+    ViewData["Title"] = "Travels";
+}
+
+
+<div class="card card-default">
+    <div class="card-header">        
+        Travels from <b>@Model[0].DepartureCity</b> to <b>@Model[0].ArrivalCity</b>  
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>  
+                    <td><i class="fas fa-user"></i> @Html.DisplayNameFor(model => model[0].Driver.FullName)</td>
+                    <td><i class="fas fa-city"></i> @Html.DisplayNameFor(model => model[0].DepartureCity)</td>                                        
+                    <td><i class="fas fa-city"></i> @Html.DisplayNameFor(model => model[0].ArrivalCity)</td>
+                    <td><i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model[0].DueAt)</td>
+                    <td><i class="fas fa-dollar-sign"></i> @Html.DisplayNameFor(model => model[0].Price)</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var travel in Model)
+                {
+                    <tr>  
+                        <td>@Html.DisplayFor(modelItem => travel.Driver.FullName)</td>
+                        <td>@Html.DisplayFor(modelItem => travel.DepartureCity)</td>
+                        <td>@Html.DisplayFor(modelItem => travel.ArrivalCity)</td>
+                        <td>@Html.DisplayFor(modelItem => travel.DueAt)</td>
+                        <td>@Html.DisplayFor(modelItem => travel.Price)</td>
+                        <td>
+                            <a asp-controller="Travel" asp-action="BookTravel" asp-route-travelId="@travel.Id">Book travel</a>
+                        </td>                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <a asp-controller="Travel" asp-action="Create"><i class="fas fa-plus"></i> Create Travel</a>        
+    </div>
+</div>
+
+
+
+
+
+
+
+

@@ -76,6 +76,24 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("AspNetCoreShareCar.Models.Booking", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("PassengerId");
+
+                    b.Property<Guid?>("TravelId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PassengerId");
+
+                    b.HasIndex("TravelId");
+
+                    b.ToTable("Bookings");
+                });
+
             modelBuilder.Entity("AspNetCoreShareCar.Models.Travel", b =>
                 {
                     b.Property<Guid>("Id")
@@ -96,7 +114,8 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.Property<string>("PassengerId")
                         .IsRequired();
 
-                    b.Property<double>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("Seats");
 
@@ -149,7 +168,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -169,7 +188,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128);
@@ -189,7 +208,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserRole<string>", b =>
                 {
                     b.Property<string>("UserId");
 
@@ -202,7 +221,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserToken<string>", b =>
                 {
                     b.Property<string>("UserId");
 
@@ -219,6 +238,17 @@ namespace AspNetCoreShareCar.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AspNetCoreShareCar.Models.Booking", b =>
+                {
+                    b.HasOne("AspNetCoreShareCar.Models.ApplicationUser", "Passenger")
+                        .WithMany("Bookings")
+                        .HasForeignKey("PassengerId");
+
+                    b.HasOne("AspNetCoreShareCar.Models.Travel", "Travel")
+                        .WithMany("Bookings")
+                        .HasForeignKey("TravelId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -227,7 +257,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserClaim<string>", b =>
                 {
                     b.HasOne("AspNetCoreShareCar.Models.ApplicationUser")
                         .WithMany()
@@ -235,7 +265,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserLogin<string>", b =>
                 {
                     b.HasOne("AspNetCoreShareCar.Models.ApplicationUser")
                         .WithMany()
@@ -243,7 +273,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserRole<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
                         .WithMany()
@@ -256,7 +286,7 @@ namespace AspNetCoreShareCar.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.AspNetCoreShareCar.Models.ApplicationUserToken<string>", b =>
                 {
                     b.HasOne("AspNetCoreShareCar.Models.ApplicationUser")
                         .WithMany()

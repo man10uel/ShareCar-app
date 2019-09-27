@@ -11,7 +11,7 @@
 @{
 
     ViewData["Title"] = "Travels Done";
-    double totalAmount = 0;
+    decimal totalAmount = 0;
 }
 
 
@@ -26,37 +26,32 @@
     <table class="table table-hover mb-0">
         <thead>
             <tr>
-                <td>&#x2714;</td>
-                <td><i class="fas fa-user"></i> 
-                    @Html.DisplayNameFor(model => model.Travels[0].PassengerId)
-                </td>
+                <td>&#x2714;</td>                
                 <td><i class="fas fa-city"></i> @Html.DisplayNameFor(model => model.Travels[0].DepartureCity)</td>
                 <td><i class="fas fa-city"></i> @Html.DisplayNameFor(model => model.Travels[0].ArrivalCity)</td>
                 <td><i class="fas fa-calendar-alt"></i> @Html.DisplayNameFor(model => model.Travels[0].DueAt)</td>
                 <td><i class="fas fa-dollar-sign"></i> @Html.DisplayNameFor(model => model.Travels[0].Price)</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
             @foreach (var travel in Model.Travels)
             {
-            <tr>
-                @{
-                    var user = 
-                        await userManager.FindByIdAsync(travel.PassengerId);
-                    var checkDisabled =
-                        ViewData["CurrentPassengerOrDriver"].ToString() == "Driver" ? "disabled" : "";
-                }
-                <td>                    
+            <tr>                
+                @*<td>                    
                     <form asp-action="ToPay" method="POST">                       
                     <input type="checkbox" class="done-checkbox" @checkDisabled />
                     <input type="hidden" name="travelId" value="@travel.Id" />
                     </form>
-                </td>
-                <td>@Html.DisplayFor(modelItem => user.UserName)</td>
+                </td>*@
+                <td>@Html.DisplayFor(modelItem => travel.Driver.FullName)</td>
                 <td>@Html.DisplayFor(modelItem => travel.DepartureCity)</td>
                 <td>@Html.DisplayFor(modelItem => travel.ArrivalCity)</td>
                 <td>@Html.DisplayFor(modelItem => travel.DueAt)</td>
                 <td>@Html.DisplayFor(modelItem => travel.Price)</td>
+                <td>
+                    <a asp-action="BookTravel" asp-route-travelId="@travel.Id">Book travel</a>
+                </td>
                 @{ totalAmount += travel.Price; } 
             </tr>
             }
@@ -69,3 +64,4 @@
         <div class="float-right">Total Amount @totalAmount <i class="fas fa-euro-sign"></i> </div>
     </div>
 </div>
+

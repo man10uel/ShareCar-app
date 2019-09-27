@@ -11,13 +11,13 @@ namespace AspNetCoreShareCar.Areas.Identity.Pages.Account.Manage
 {
     public class ResetAuthenticatorModel : PageModel
     {
-        UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        UserManager<AspNetCoreShareCar.Models.ApplicationUser> _userManager;
+        private readonly SignInManager<AspNetCoreShareCar.Models.ApplicationUser> _signInManager;
         ILogger<ResetAuthenticatorModel> _logger;
 
         public ResetAuthenticatorModel(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
+            UserManager<AspNetCoreShareCar.Models.ApplicationUser> userManager,
+            SignInManager<AspNetCoreShareCar.Models.ApplicationUser> signInManager,
             ILogger<ResetAuthenticatorModel> logger)
         {
             _userManager = userManager;

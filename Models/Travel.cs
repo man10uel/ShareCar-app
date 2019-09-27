@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
 
@@ -30,17 +32,18 @@ namespace AspNetCoreShareCar.Models
         public DateTimeOffset DueAt { get; set; }
 
         [Required]
-        [Display(Name = "Price")]        
-        public double Price { get; set; }
-
-        [Required]
-        [Display(Name = "Passenger")]
-        public string PassengerId { get; set; }
+        [Display(Name = "Price")]
+        [Column(TypeName = "decimal(18, 2)")]
+        public decimal Price { get; set; }        
 
         [Display(Name = "Driver")]
         public string DriverId { get; set;  }
 
         public bool Paid { get; set; }
+
+        // Relations
+        public ApplicationUser Driver { get; set; }
+        public IList<Booking> Bookings { get; set; }
 
     }
 }

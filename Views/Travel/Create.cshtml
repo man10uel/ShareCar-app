@@ -23,21 +23,8 @@
 
         <form asp-action="Create" method="post">
 
-            <div asp-validation="ModelOnly" class="text-danger"></div>
-
-
-            <!-- PassengerId -->
-            <div class="form-group">
-                <label asp-for="PassengerId" class="control-label"></label>
-                <select asp-for="PassengerId" class="form-control">
-                    <option> Select Passenger </option>
-                    @foreach (var user in userManager.Users.ToArray())
-                    {
-                        <option value="@user.Id">@user.Email</option>
-                    }
-                </select>
-                <span asp-validation-for="PassengerId" class="text-danger"></span>
-            </div>
+            <div asp-validation="ModelOnly" class="text-danger"></div>            
+            
             <div class="form-group">
                 <label asp-for="DepartureCity" class="control-label"></label>
                 <input asp-for="DepartureCity" class="form-control" />
@@ -56,7 +43,7 @@
 
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input type="number" asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
 
